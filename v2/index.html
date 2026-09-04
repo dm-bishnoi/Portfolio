@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Dharmender — Full Stack Developer · Digital experiences that feel alive</title>
+  <meta name="description" content="Portfolio of Dharmender, a full stack developer working in Angular, TypeScript, Node.js, and AI integrations." />
+  <meta name="theme-color" content="#090D16" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: { 0: '#090D16', 1: '#0a0a0c' },
+            primary: {
+              50:  '#FAF5FF',
+              100: '#F3E8FF',
+              300: '#D8B4FE',
+              400: '#C084FC',
+              500: '#A855F7',
+              600: '#9333EA',
+              700: '#7E22CE',
+            },
+            muted: { DEFAULT: '#94A3B8' },
+          },
+          fontFamily: {
+            sans:  ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'Times New Roman', 'serif'],
+            mono:  ['"JetBrains Mono"', 'ui-monospace', 'SF Mono', 'monospace'],
+          },
+          boxShadow: {
+            'glow': '0 0 40px -10px rgba(168, 85, 247, 0.55)',
+            'glow-lg': '0 0 80px -20px rgba(168, 85, 247, 0.6)',
+          },
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles/custom.css" />
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://esm.sh/three@0.160.0"
+      }
+    }
+  </script>
+</head>
+<body class="bg-ink-0 text-slate-100 font-sans antialiased overflow-x-hidden">
+
+  <!-- ===== NAV ===== -->
+  <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+      <a href="#hero" class="flex items-center gap-2 group">
+        <span class="w-8 h-8 grid place-items-center border border-white/15 rounded-md text-primary-400 font-serif text-lg group-hover:border-primary-500/60 transition-colors">D</span>
+        <span class="font-mono text-sm tracking-wider hidden sm:inline">Dharmender<span class="text-primary-400">.</span>dev</span>
+      </a>
+      <nav aria-label="Primary" class="hidden md:flex items-center gap-8">
+        <a href="#about"     class="font-mono text-xs uppercase tracking-widest text-slate-400 hover:text-primary-400 transition-colors">About</a>
+        <a href="#stack"     class="font-mono text-xs uppercase tracking-widest text-slate-400 hover:text-primary-400 transition-colors">Stack</a>
+        <a href="#projects"  class="font-mono text-xs uppercase tracking-widest text-slate-400 hover:text-primary-400 transition-colors">Work</a>
+        <a href="#contact"   class="font-mono text-xs uppercase tracking-widest text-slate-400 hover:text-primary-400 transition-colors">Contact</a>
+      </nav>
+      <a href="#contact" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 text-sm font-medium hover:border-primary-500/60 hover:text-primary-300 transition-all duration-300">
+        Get in touch <span aria-hidden="true">→</span>
+      </a>
+      <button id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" class="md:hidden font-mono text-xs uppercase tracking-widest border border-white/15 rounded-md px-3 py-2">Menu</button>
+    </div>
+    <div id="mobile-menu" class="md:hidden hidden bg-ink-0/95 backdrop-blur-md border-t border-white/10">
+      <nav class="px-6 py-6 flex flex-col gap-4">
+        <a href="#about"    class="font-mono text-sm uppercase tracking-widest text-slate-300 hover:text-primary-400">About</a>
+        <a href="#stack"    class="font-mono text-sm uppercase tracking-widest text-slate-300 hover:text-primary-400">Stack</a>
+        <a href="#projects" class="font-mono text-sm uppercase tracking-widest text-slate-300 hover:text-primary-400">Work</a>
+        <a href="#contact"  class="font-mono text-sm uppercase tracking-widest text-slate-300 hover:text-primary-400">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+      <!-- soft violet glow behind the canvas -->
+      <div aria-hidden="true" class="pointer-events-none absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-primary-500/20 blur-[120px]"></div>
+      <div aria-hidden="true" class="pointer-events-none absolute -bottom-32 -left-32 w-[500px] h-[500px] rounded-full bg-primary-700/10 blur-[100px]"></div>
+
+      <div class="max-w-6xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+        <!-- Left: copy -->
+        <div>
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-primary-400 flex items-center gap-3">
+            <span class="inline-block w-8 h-px bg-primary-500/60"></span>
+            Full Stack Developer
+          </p>
+
+          <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl leading-[0.95] mt-6 text-white">
+            I build <em class="italic text-primary-400">digital</em> experiences that feel alive.
+          </h1>
+
+          <p class="text-slate-400 text-lg leading-relaxed mt-6 max-w-md">
+            I'm Dharmender — a developer crafting calm, considered products with Angular, TypeScript, and a long-running curiosity for how the web can feel.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a href="#projects" class="group inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary-500 hover:bg-primary-600 text-white font-medium shadow-glow hover:shadow-glow-lg transition-all duration-300 hover:-translate-y-0.5">
+              Explore My Work
+              <span class="transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
+            </a>
+            <a href="#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 text-slate-300 hover:border-primary-500/60 hover:text-white transition-all duration-300">
+              Get in touch
+            </a>
+          </div>
+
+          <div class="mt-12 flex items-center gap-6 text-xs font-mono uppercase tracking-widest text-slate-500">
+            <span class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-primary-500 animate-pulse"></span> Available for new work</span>
+            <span class="hidden sm:inline">·</span>
+            <span class="hidden sm:inline">Based in India · Remote</span>
+          </div>
+        </div>
+
+        <!-- Right: particle sphere -->
+        <div class="relative aspect-square w-full max-w-[560px] mx-auto" id="hero-canvas-wrap">
+          <!-- soft ring behind canvas -->
+          <div aria-hidden="true" class="absolute inset-8 rounded-full border border-primary-500/20"></div>
+          <div aria-hidden="true" class="absolute inset-16 rounded-full border border-primary-500/10"></div>
+          <canvas id="particle-sphere" class="absolute inset-0 w-full h-full" aria-label="Animated 3D particle sphere"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="relative py-24 sm:py-32">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <div class="lg:col-span-5">
+            <p class="font-mono text-xs uppercase tracking-[0.25em] text-primary-400">01 — About</p>
+            <h2 class="font-serif text-4xl sm:text-5xl leading-[1.05] mt-4 text-white">
+              I work across the <em class="italic text-primary-400">full stack</em>, and care about how things feel.
+            </h2>
+          </div>
+          <div class="lg:col-span-7 space-y-6 text-slate-300 text-lg leading-relaxed">
+            <p>
+              From shaping product interfaces in Angular to wiring APIs in Node and persisting data in MongoDB or PostgreSQL — I like the work where design, engineering, and product thinking meet.
+            </p>
+            <p>
+              These days I'm especially interested in the seam between traditional web engineering and AI-powered products. How do you build an interface that still feels calm, fast, and considered when there's an LLM in the loop?
+            </p>
+            <ul class="space-y-5 pt-4">
+              <li class="flex gap-4">
+                <span aria-hidden="true" class="mt-2 w-1.5 h-1.5 rounded-full bg-primary-500 flex-none"></span>
+                <div>
+                  <h3 class="font-serif text-xl text-white">Product-minded engineer</h3>
+                  <p class="text-slate-400 text-base mt-1">I think about the user before the framework. Decisions flow from the problem, not the other way around.</p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <span aria-hidden="true" class="mt-2 w-1.5 h-1.5 rounded-full bg-primary-500 flex-none"></span>
+                <div>
+                  <h3 class="font-serif text-xl text-white">Calm, considered UI</h3>
+                  <p class="text-slate-400 text-base mt-1">Restrained motion, honest typography, generous spacing. The interface should disappear, the work shouldn't.</p>
+                </div>
+              </li>
+              <li class="flex gap-4">
+                <span aria-hidden="true" class="mt-2 w-1.5 h-1.5 rounded-full bg-primary-500 flex-none"></span>
+                <div>
+                  <h3 class="font-serif text-xl text-white">End-to-end ownership</h3>
+                  <p class="text-slate-400 text-base mt-1">From a TypeScript interface to a Postgres index — I'll happily own the whole loop, and the boring parts in between.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TECH STACK ===== -->
+    <section id="stack" class="relative py-24 sm:py-32 bg-gradient-to-b from-transparent via-primary-500/[0.03] to-transparent">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-2xl">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-primary-400">02 — Tech Stack</p>
+          <h2 class="font-serif text-4xl sm:text-5xl leading-[1.05] mt-4 text-white">
+            A small, considered <em class="italic text-primary-400">toolbox.</em>
+          </h2>
+          <p class="text-slate-400 text-lg leading-relaxed mt-6">
+            Tools I reach for. Each one earns its place by doing something the others can't, or by doing it better.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16">
+          <!-- tile -->
+          <div class="group p-6 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/10 hover:border-primary-500/50 hover:-translate-y-1 transition-all duration-300 text-center">
+            <div class="w-12 h-12 mx-auto grid place-items-center rounded-xl bg-white/5 text-primary-400 group-hover:text-primary-300 transition-colors">
+              <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7L2 14l10 5 10-5-10-5z"/></svg>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-widest text-slate-300 mt-4">Angular</p>
+          </div>
+          <div class="group p-6 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/10 hover:border-primary-500/50 hover:-translate-y-1 transition-all duration-300 text-center">
+            <div class="w-12 h-12 mx-auto grid place-items-center rounded-xl bg-white/5 text-primary-400 group-hover:text-primary-300 transition-colors">
+              <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" aria-hidden="true"><path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h2v10H7V7zm4 0h2v10h-2V7zm4 0h2v10h-2V7z"/></svg>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-widest text-slate-300 mt-4">TypeScript</p>
+          </div>
+          <div class="group p-6 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/10 hover:border-primary-500/50 hover:-translate-y-1 transition-all duration-300 text-center">
+            <div class="w-12 h-12 mx-auto grid place-items-center rounded-xl bg-white/5 text-primary-400 group-hover:text-primary-300 transition-colors">
+              <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/><path d="M12 6c-3.3 0-6 2.7-6 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 10c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z"/></svg>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-widest text-slate-300 mt-4">Node.js</p>
+          </div>
+          <div class="group p-6 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/10 hover:border-primary-500/50 hover:-translate-y-1 transition-all duration-300 text-center">
+            <div class="w-12 h-12 mx-auto grid place-items-center rounded-xl bg-white/5 text-primary-400 group-hover:text-primary-300 transition-colors">
+              <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" aria-hidden="true"><path d="M21 7l-9-5-9 5 9 5 9-5zm-9 7l-9-5v10l9 5 9-5V9l-9 5z"/></svg>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-widest text-slate-300 mt-4">MongoDB</p>
+          </div>
+          <div class="group p-6 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/10 hover:border-primary-500/50 hover:-translate-y-1 transition-all duration-300 text-center">
+            <div class="w-12 h-12 mx-auto grid place-items-center rounded-xl bg-white/5 text-primary-400 group-hover:text-primary-300 transition-colors">
+              <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/></svg>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-widest text-slate-300 mt-4">PostgreSQL</p>
+          </div>
+          <div class="group p-6 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/10 hover:border-primary-500/50 hover:-translate-y-1 transition-all duration-300 text-center">
+            <div class="w-12 h-12 mx-auto grid place-items-center rounded-xl bg-white/5 text-primary-400 group-hover:text-primary-300 transition-colors">
+              <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" aria-hidden="true"><path d="M12 2L2 19h20L12 2zm0 4l7 11H5l7-11z"/></svg>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-widest text-slate-300 mt-4">Tailwind</p>
+          </div>
+          <div class="group p-6 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/10 hover:border-primary-500/50 hover:-translate-y-1 transition-all duration-300 text-center">
+            <div class="w-12 h-12 mx-auto grid place-items-center rounded-xl bg-white/5 text-primary-400 group-hover:text-primary-300 transition-colors">
+              <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="7" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="17" cy="12" r="1.5"/></svg>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-widest text-slate-300 mt-4">Docker</p>
+          </div>
+          <div class="group p-6 rounded-2xl bg-white/[0.04] backdrop-blur-md border border-white/10 hover:border-primary-500/50 hover:-translate-y-1 transition-all duration-300 text-center">
+            <div class="w-12 h-12 mx-auto grid place-items-center rounded-xl bg-white/5 text-primary-400 group-hover:text-primary-300 transition-colors">
+              <svg viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 4a6 6 0 110 12 6 6 0 010-12z"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <p class="font-mono text-xs uppercase tracking-widest text-slate-300 mt-4">AI · LLM</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" class="relative py-24 sm:py-32">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="max-w-2xl">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-primary-400">03 — Featured Projects</p>
+          <h2 class="font-serif text-4xl sm:text-5xl leading-[1.05] mt-4 text-white">
+            A few things I've <em class="italic text-primary-400">built.</em>
+          </h2>
+          <p class="text-slate-400 text-lg leading-relaxed mt-6">
+            Selected work from the last couple of years. Each one shipped to production and is being used by real people.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+          <!-- Project 1 — RadarDraft -->
+          <article class="group rounded-2xl bg-white/[0.03] border border-white/10 overflow-hidden hover:border-primary-500/50 hover:-translate-y-1 transition-all duration-300">
+            <div class="aspect-[4/3] bg-ink-1 border-b border-white/10 relative overflow-hidden">
+              <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                <rect width="600" height="450" fill="#0F131C"/>
+                <!-- sidebar -->
+                <rect x="0" y="0" width="140" height="450" fill="#0A0E16"/>
+                <rect x="16" y="24" width="80" height="8" rx="2" fill="#1A1F2C"/>
+                <rect x="16" y="44" width="100" height="6" rx="1" fill="#11151F"/>
+                <rect x="16" y="58" width="80"  height="6" rx="1" fill="#11151F"/>
+                <rect x="16" y="72" width="90"  height="6" rx="1" fill="#11151F"/>
+                <rect x="16" y="120" width="60" height="6" rx="1" fill="#A855F7" opacity="0.6"/>
+                <rect x="16" y="136" width="80" height="6" rx="1" fill="#11151F"/>
+                <rect x="16" y="152" width="70" height="6" rx="1" fill="#11151F"/>
+                <!-- top bar -->
+                <rect x="160" y="24" width="180" height="10" rx="2" fill="#1A1F2C"/>
+                <rect x="160" y="44" width="120" height="6"  rx="1" fill="#11151F"/>
+                <!-- list rows -->
+                <g transform="translate(160,84)">
+                  <rect width="420" height="56" rx="4" fill="#11151F"/>
+                  <circle cx="24" cy="28" r="8" fill="#A855F7" opacity="0.5"/>
+                  <rect x="44" y="14" width="160" height="8" rx="1" fill="#1A1F2C"/>
+                  <rect x="44" y="30" width="100" height="5" rx="1" fill="#161B27"/>
+                  <rect x="356" y="20" width="50" height="16" rx="8" fill="#A855F7" opacity="0.25"/>
+                  <text x="381" y="32" text-anchor="middle" fill="#C084FC" font-size="8" font-family="monospace" letter-spacing="1">DRAFT</text>
+                </g>
+                <g transform="translate(160,152)">
+                  <rect width="420" height="56" rx="4" fill="#11151F"/>
+                  <circle cx="24" cy="28" r="8" fill="#5CC8FF" opacity="0.5"/>
+                  <rect x="44" y="14" width="200" height="8" rx="1" fill="#1A1F2C"/>
+                  <rect x="44" y="30" width="80"  height="5" rx="1" fill="#161B27"/>
+                  <rect x="356" y="20" width="50" height="16" rx="8" fill="#5CC8FF" opacity="0.25"/>
+                  <text x="381" y="32" text-anchor="middle" fill="#5CC8FF" font-size="8" font-family="monospace" letter-spacing="1">REVIEW</text>
+                </g>
+                <g transform="translate(160,220)">
+                  <rect width="420" height="56" rx="4" fill="#11151F"/>
+                  <circle cx="24" cy="28" r="8" fill="#28C840" opacity="0.5"/>
+                  <rect x="44" y="14" width="140" height="8" rx="1" fill="#1A1F2C"/>
+                  <rect x="44" y="30" width="120" height="5" rx="1" fill="#161B27"/>
+                  <rect x="356" y="20" width="50" height="16" rx="8" fill="#28C840" opacity="0.25"/>
+                  <text x="381" y="32" text-anchor="middle" fill="#28C840" font-size="8" font-family="monospace" letter-spacing="1">SHIPPED</text>
+                </g>
+                <!-- bottom chart bars -->
+                <g transform="translate(160,300)">
+                  <rect width="420" height="120" rx="4" fill="#11151F"/>
+                  <rect x="20"  y="80" width="14" height="20" rx="2" fill="#A855F7" opacity="0.4"/>
+                  <rect x="48"  y="60" width="14" height="40" rx="2" fill="#A855F7" opacity="0.5"/>
+                  <rect x="76"  y="40" width="14" height="60" rx="2" fill="#A855F7" opacity="0.6"/>
+                  <rect x="104" y="50" width="14" height="50" rx="2" fill="#A855F7" opacity="0.55"/>
+                  <rect x="132" y="30" width="14" height="70" rx="2" fill="#A855F7" opacity="0.7"/>
+                  <rect x="160" y="20" width="14" height="80" rx="2" fill="#A855F7" opacity="0.8"/>
+                  <rect x="188" y="35" width="14" height="65" rx="2" fill="#A855F7" opacity="0.65"/>
+                  <rect x="216" y="25" width="14" height="75" rx="2" fill="#A855F7" opacity="0.75"/>
+                  <rect x="244" y="45" width="14" height="55" rx="2" fill="#A855F7" opacity="0.5"/>
+                </g>
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border border-white/10 text-slate-400">Angular</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border border-white/10 text-slate-400">TypeScript</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border border-white/10 text-slate-400">Node.js</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border border-white/10 text-slate-400">MongoDB</span>
+              </div>
+              <h3 class="font-serif text-2xl text-white">RadarDraft</h3>
+              <p class="text-slate-400 leading-relaxed mt-3">
+                A drafting workspace for radar and tracking workflows — combining structured forms with a clean review surface so teams can move from raw signal to documented record without context-switching.
+              </p>
+              <a href="#" class="inline-flex items-center gap-2 mt-5 text-primary-400 hover:text-primary-300 font-medium transition-colors group/link">
+                View project
+                <span class="transition-transform group-hover/link:translate-x-1" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2 — Storage Manager -->
+          <article class="group rounded-2xl bg-white/[0.03] border border-white/10 overflow-hidden hover:border-primary-500/50 hover:-translate-y-1 transition-all duration-300">
+            <div class="aspect-[4/3] bg-ink-1 border-b border-white/10 relative overflow-hidden">
+              <svg viewBox="0 0 600 450" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                <rect width="600" height="450" fill="#0F131C"/>
+                <!-- toolbar -->
+                <rect x="20" y="20" width="560" height="36" rx="4" fill="#0A0E16"/>
+                <circle cx="40"  cy="38" r="4" fill="#FF5F57"/>
+                <circle cx="56"  cy="38" r="4" fill="#FEBC2E"/>
+                <circle cx="72"  cy="38" r="4" fill="#28C840"/>
+                <rect x="240" y="30" width="200" height="16" rx="8" fill="#11151F"/>
+                <text x="340" y="42" text-anchor="middle" fill="#94A3B8" font-size="9" font-family="monospace" letter-spacing="1">storage.local</text>
+                <!-- table header -->
+                <g transform="translate(20,76)">
+                  <rect width="560" height="32" fill="#0A0E16"/>
+                  <text x="20"  y="20" fill="#94A3B8" font-size="10" font-family="monospace" letter-spacing="1.5">NAME</text>
+                  <text x="280" y="20" fill="#94A3B8" font-size="10" font-family="monospace" letter-spacing="1.5">SIZE</text>
+                  <text x="380" y="20" fill="#94A3B8" font-size="10" font-family="monospace" letter-spacing="1.5">MODIFIED</text>
+                  <text x="490" y="20" fill="#94A3B8" font-size="10" font-family="monospace" letter-spacing="1.5">TYPE</text>
+                </g>
+                <!-- rows -->
+                <g transform="translate(20,116)">
+                  <rect width="560" height="40" fill="#11151F"/>
+                  <circle cx="32" cy="20" r="4" fill="#A855F7"/>
+                  <text x="48"  y="24" fill="#E2E8F0" font-size="11" font-family="monospace">drafts</text>
+                  <text x="280" y="24" fill="#94A3B8" font-size="11" font-family="monospace">2.4 MB</text>
+                  <text x="380" y="24" fill="#94A3B8" font-size="11" font-family="monospace">2 hours ago</text>
+                  <text x="490" y="24" fill="#C084FC" font-size="10" font-family="monospace">FOLDER</text>
+                </g>
+                <g transform="translate(20,160)">
+                  <rect width="560" height="40" fill="#0F131C"/>
+                  <rect x="28" y="14" width="12" height="12" rx="2" fill="#5CC8FF"/>
+                  <text x="48"  y="24" fill="#E2E8F0" font-size="11" font-family="monospace">radar-capture.json</text>
+                  <text x="280" y="24" fill="#94A3B8" font-size="11" font-family="monospace">14.2 KB</text>
+                  <text x="380" y="24" fill="#94A3B8" font-size="11" font-family="monospace">yesterday</text>
+                  <text x="490" y="24" fill="#5CC8FF" font-size="10" font-family="monospace">JSON</text>
+                </g>
+                <g transform="translate(20,204)">
+                  <rect width="560" height="40" fill="#11151F"/>
+                  <rect x="28" y="14" width="12" height="12" rx="2" fill="#28C840"/>
+                  <text x="48"  y="24" fill="#E2E8F0" font-size="11" font-family="monospace">build-output.tar</text>
+                  <text x="280" y="24" fill="#94A3B8" font-size="11" font-family="monospace">128 MB</text>
+                  <text x="380" y="24" fill="#94A3B8" font-size="11" font-family="monospace">3 days ago</text>
+                  <text x="490" y="24" fill="#28C840" font-size="10" font-family="monospace">ARCHIVE</text>
+                </g>
+                <g transform="translate(20,248)">
+                  <rect width="560" height="40" fill="#0F131C"/>
+                  <rect x="28" y="14" width="12" height="12" rx="2" fill="#FFC15C"/>
+                  <text x="48"  y="24" fill="#E2E8F0" font-size="11" font-family="monospace">readme.md</text>
+                  <text x="280" y="24" fill="#94A3B8" font-size="11" font-family="monospace">4.1 KB</text>
+                  <text x="380" y="24" fill="#94A3B8" font-size="11" font-family="monospace">last week</text>
+                  <text x="490" y="24" fill="#FFC15C" font-size="10" font-family="monospace">MARKDOWN</text>
+                </g>
+                <g transform="translate(20,292)">
+                  <rect width="560" height="40" fill="#11151F"/>
+                  <rect x="28" y="14" width="12" height="12" rx="2" fill="#FF5CC8"/>
+                  <text x="48"  y="24" fill="#E2E8F0" font-size="11" font-family="monospace">config.local</text>
+                  <text x="280" y="24" fill="#94A3B8" font-size="11" font-family="monospace">812 B</text>
+                  <text x="380" y="24" fill="#94A3B8" font-size="11" font-family="monospace">2 weeks ago</text>
+                  <text x="490" y="24" fill="#FF5CC8" font-size="10" font-family="monospace">CONFIG</text>
+                </g>
+                <!-- metric chip -->
+                <g transform="translate(20,356)">
+                  <rect width="560" height="70" rx="4" fill="#0A0E16"/>
+                  <text x="20"  y="28" fill="#94A3B8" font-size="10" font-family="monospace" letter-spacing="1.5">LOCAL RECORDS</text>
+                  <text x="20"  y="56" fill="#FFFFFF" font-size="28" font-family="serif" font-style="italic">1,000+</text>
+                  <text x="540" y="40" text-anchor="end" fill="#A855F7" font-size="10" font-family="monospace" letter-spacing="1.5">↑ 12% WEEK</text>
+                  <text x="540" y="56" text-anchor="end" fill="#94A3B8" font-size="10" font-family="monospace" letter-spacing="1.5">all offline-capable</text>
+                </g>
+              </svg>
+            </div>
+            <div class="p-6">
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border border-white/10 text-slate-400">Angular</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border border-white/10 text-slate-400">IndexedDB</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest px-3 py-1 rounded-full border border-white/10 text-slate-400">TypeScript</span>
+              </div>
+              <h3 class="font-serif text-2xl text-white">Storage Manager</h3>
+              <p class="text-slate-400 leading-relaxed mt-3">
+                A local-first data store that handles 1,000+ records entirely in the browser. Built for a field tool that has to keep working when the network doesn't.
+              </p>
+              <a href="#" class="inline-flex items-center gap-2 mt-5 text-primary-400 hover:text-primary-300 font-medium transition-colors group/link">
+                View project
+                <span class="transition-transform group-hover/link:translate-x-1" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="relative py-24 sm:py-32 bg-gradient-to-b from-transparent via-primary-500/[0.04] to-transparent">
+      <div class="max-w-3xl mx-auto px-6">
+        <div class="text-center max-w-xl mx-auto">
+          <p class="font-mono text-xs uppercase tracking-[0.25em] text-primary-400">04 — Contact</p>
+          <h2 class="font-serif text-4xl sm:text-5xl leading-[1.05] mt-4 text-white">
+            Let's build something <em class="italic text-primary-400">worth remembering.</em>
+          </h2>
+          <p class="text-slate-400 text-lg leading-relaxed mt-6">
+            Open to product work, AI integrations, and ambitious frontend builds. Tell me what you're making.
+          </p>
+        </div>
+
+        <form class="mt-12 space-y-5" novalidate>
+          <div>
+            <label for="contact-name" class="block font-mono text-xs uppercase tracking-widest text-slate-400 mb-2">Name</label>
+            <input id="contact-name" name="name" type="text" required placeholder="Your name"
+                   class="w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 transition-all duration-200" />
+          </div>
+          <div>
+            <label for="contact-email" class="block font-mono text-xs uppercase tracking-widest text-slate-400 mb-2">Email</label>
+            <input id="contact-email" name="email" type="email" required placeholder="[email protected]"
+                   class="w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 transition-all duration-200" />
+          </div>
+          <div>
+            <label for="contact-message" class="block font-mono text-xs uppercase tracking-widest text-slate-400 mb-2">Message</label>
+            <textarea id="contact-message" name="message" rows="5" required placeholder="What are you building?"
+                      class="w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-primary-500 focus:ring-2 focus:ring-primary-500/30 transition-all duration-200 resize-y"></textarea>
+          </div>
+          <button type="submit"
+                  class="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-primary-500 hover:bg-primary-600 text-white font-medium shadow-glow hover:shadow-glow-lg transition-all duration-300 hover:-translate-y-0.5">
+            Send message
+            <span aria-hidden="true">→</span>
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="border-t border-white/5 py-10">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-slate-500 font-mono">
+      <p>© 2026 Dharmender</p>
+      <p>Designed and built with care</p>
+      <a href="#hero" class="hover:text-primary-400 transition-colors">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <!-- Theme switcher mount -->
+  <div id="theme-switcher" aria-label="Portfolio theme"></div>
+  <link rel="stylesheet" href="../shared/theme-switcher.css" />
+  <script src="../shared/registry.js" defer></script>
+  <script src="../shared/theme-switcher.js" defer></script>
+
+  <script type="module" src="scripts/particle-sphere.js"></script>
+  <script>
+    // Nav background fill on scroll
+    const nav = document.getElementById('nav');
+    const onScroll = () => {
+      if (window.scrollY > 24) {
+        nav.classList.add('bg-ink-0/70', 'backdrop-blur-md', 'border-b', 'border-white/5');
+      } else {
+        nav.classList.remove('bg-ink-0/70', 'backdrop-blur-md', 'border-b', 'border-white/5');
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Mobile menu toggle
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    btn?.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden') === false;
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.add('hidden')));
+  </script>
+</body>
+</html>

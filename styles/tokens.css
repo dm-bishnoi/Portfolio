@@ -1,0 +1,103 @@
+/* tokens.css — design tokens for the portfolio
+   Single source of truth. Future Angular theme imports this 1:1. */
+
+:root {
+  /* —— color ——————————————————————————————————————— */
+  --bg-0: #07080C;
+  --bg-1: #0B0E16;
+  --bg-2: #11151F;
+  --bg-3: #161B27;
+
+  --ink-100: #F4F5FA;
+  --ink-80:  rgba(244, 245, 250, 0.80);
+  --ink-70:  rgba(244, 245, 250, 0.72);
+  --ink-50:  rgba(244, 245, 250, 0.52);
+  --ink-30:  rgba(244, 245, 250, 0.30);
+  --ink-15:  rgba(244, 245, 250, 0.15);
+
+  --line-08: rgba(255, 255, 255, 0.04);
+  --line-15: rgba(255, 255, 255, 0.08);
+  --line-25: rgba(255, 255, 255, 0.12);
+  --line-40: rgba(255, 255, 255, 0.20);
+
+  --accent-violet:  #7C5CFF;
+  --accent-blue:    #5CC8FF;
+  --accent-magenta: #FF5CC8;
+  --accent-amber:   #FFC15C;
+
+  --glow-violet: rgba(124, 92, 255, 0.45);
+  --glow-blue:   rgba(92, 200, 255, 0.35);
+  --glow-magenta:rgba(255, 92, 200, 0.25);
+
+  /* —— typography ——————————————————————————————————— */
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-sans:    "Inter Tight", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
+
+  --fz-caption:   0.75rem;
+  --fz-body:      1.0625rem;
+  --fz-lead:      1.25rem;
+  --fz-h3:        clamp(1.5rem, 2.5vw, 2.25rem);
+  --fz-h2:        clamp(2.5rem, 6vw, 5rem);
+  --fz-h1:        clamp(3.5rem, 9vw, 8.5rem);
+
+  --lh-tight:  0.92;
+  --lh-snug:   1.05;
+  --lh-normal: 1.5;
+  --lh-loose:  1.7;
+
+  --tr-tight:   -0.04em;
+  --tr-snug:    -0.025em;
+  --tr-normal:  -0.01em;
+  --tr-wide:    0.06em;
+  --tr-mono:    0.18em;
+
+  /* —— spacing ————————————————————————————————————— */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-6:  24px;
+  --s-8:  32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-24: 96px;
+  --s-32: 128px;
+  --s-48: 192px;
+
+  --container-max: 1440px;
+  --container-pad: clamp(20px, 4vw, 56px);
+  --section-pad-y: clamp(96px, 18vh, 220px);
+
+  /* —— motion ————————————————————————————————————— */
+  --ease-out:   cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --d-micro:  220ms;
+  --d-small:  420ms;
+  --d-med:    700ms;
+  --d-large:  1100ms;
+
+  /* —— radius ————————————————————————————————————— */
+  --r-1: 2px;
+  --r-2: 6px;
+  --r-3: 12px;
+  --r-pill: 999px;
+
+  /* —— z ——————————————————————————————————————— */
+  --z-bg: 1;
+  --z-content: 10;
+  --z-nav: 100;
+  --z-cursor: 200;
+  --z-overlay: 300;
+}
+
+/* reduced motion — collapse transforms to opacity */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --d-micro: 1ms;
+    --d-small: 1ms;
+    --d-med: 1ms;
+    --d-large: 1ms;
+  }
+}

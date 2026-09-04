@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Dharmender — Full Stack Developer · Digital experiences that feel alive</title>
+  <meta name="description" content="Portfolio of Dharmender, a full stack developer working in Angular, TypeScript, Node.js, and AI integrations." />
+  <meta name="theme-color" content="#090D16" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/components.css" />
+  <link rel="stylesheet" href="styles/sections.css" />
+  <link rel="stylesheet" href="styles/v3-update.css" />
+</head>
+<body>
+  <!-- ============== BACKGROUND STAGE ============== -->
+  <div class="bg-stage" aria-hidden="true">
+    <div class="bg-orbital"></div>
+    <div class="bg-glow-a"></div>
+    <div class="bg-glow-b"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-particles" id="bg-particles"></div>
+    <div class="bg-noise"></div>
+  </div>
+
+  <!-- ============== CUSTOM CURSOR ============== -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- ============== NAV ============== -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="32" height="32" fill="none">
+            <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="1" opacity="0.4"/>
+            <path d="M9 23V9h7.5a4.5 4.5 0 0 1 0 9H12" stroke="currentColor" stroke-width="1.6" stroke-linecap="square" fill="none"/>
+            <line x1="12" y1="18" x2="22" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/>
+          </svg>
+        </span>
+        <div>
+          <div>Dharmender&nbsp;/&nbsp;°</div>
+          <span class="nav-coords" id="nav-coords">37.7749° N · 122.4194° W · —</span>
+        </div>
+      </div>
+      <nav class="nav-list" aria-label="Primary">
+        <a class="nav-link" data-num="01" href="#hero">Home</a>
+        <a class="nav-link" data-num="02" href="#about">About</a>
+        <a class="nav-link" data-num="03" href="#skills">Skills</a>
+        <a class="nav-link" data-num="04" href="#projects">Projects</a>
+        <a class="nav-link" data-num="05" href="#experience">Experience</a>
+        <a class="nav-link" data-num="06" href="#lab">Lab</a>
+        <a class="nav-link" data-num="07" href="#blog">Blog</a>
+        <a class="nav-link" data-num="08" href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary nav-cta" href="#contact" data-cursor="link">Get in touch</a>
+      <button class="nav-menu-btn hide-desktop" id="nav-menu-btn" aria-label="Open menu">MENU</button>
+    </div>
+  </header>
+
+  <!-- ============== PERSISTENT 3D STAGE ============== -->
+  <div class="scene-stage" id="scene-stage" aria-hidden="true">
+    <canvas id="core-canvas" class="core-canvas" aria-hidden="true"></canvas>
+  </div>
+
+  <div class="nav-overlay" id="nav-overlay" aria-hidden="true">
+    <a class="nav-link" data-num="01" href="#hero">Home</a>
+    <a class="nav-link" data-num="02" href="#about">About</a>
+    <a class="nav-link" data-num="03" href="#skills">Skills</a>
+    <a class="nav-link" data-num="04" href="#projects">Projects</a>
+    <a class="nav-link" data-num="05" href="#experience">Experience</a>
+    <a class="nav-link" data-num="06" href="#lab">Lab</a>
+    <a class="nav-link" data-num="07" href="#blog">Blog</a>
+    <a class="nav-link" data-num="08" href="#contact">Contact</a>
+  </div>
+
+  <main>
+    <!-- ============== 01 · HERO ============== -->
+    <section class="section" id="hero" data-section="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-left">
+            <div class="hero-eyebrow reveal">
+              <span class="tag">Full Stack Developer</span>
+              <span class="hero-divider"></span>
+              <span class="caption">Angular · Node · AI</span>
+            </div>
+            <h1 class="hero-headline reveal reveal-delay-1">
+              I build digital<br />
+              experiences<br />
+              that <em>feel alive.</em>
+            </h1>
+            <p class="hero-sub reveal reveal-delay-2">
+              I'm Dharmender — a full stack developer crafting products with Angular, TypeScript, and a long-running curiosity for how the web can feel.
+            </p>
+            <div class="hero-actions reveal reveal-delay-3">
+              <a class="btn btn-primary" href="#projects" data-cursor="link">View my work</a>
+              <a class="btn btn-ghost" href="#contact" data-cursor="link">Get in touch <span aria-hidden="true">→</span></a>
+            </div>
+            <div class="hero-status reveal reveal-delay-4">
+              <span class="dot"></span>
+              <span>System online · Building something new</span>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal reveal-delay-2">
+            <div class="core" id="core" data-cursor="core">
+              <span class="core-corner tl"></span>
+              <span class="core-corner tr"></span>
+              <span class="core-corner bl"></span>
+              <span class="core-corner br"></span>
+
+              <div class="core-static-fallback" aria-hidden="true"></div>
+
+              <div class="core-readout top">
+                <span class="dot"></span>
+                <span>CORE.001<span class="val">·</span><span class="val" style="color: var(--accent-blue)">LIVE</span></span>
+              </div>
+              <div class="core-readout top-r">Φ <span class="val" id="core-phi">0.214</span></div>
+              <div class="core-readout bottom">τ <span class="val" id="core-tau">18.4s</span></div>
+              <div class="core-readout bot-r">∇ <span class="val" id="core-grad">41%</span></div>
+            </div>
+            <p class="hero-visual-label">An interactive artifact · <span>WebGL · Three.js</span></p>
+          </div>
+        </div>
+
+        <div class="hero-marquee-strip">
+          <div class="marquee">
+            <div class="marquee-track">
+              <span>Angular</span><span>TypeScript</span><span>Node.js</span><span>MongoDB</span>
+              <span>PostgreSQL</span><span>Tailwind</span><span>Docker</span><span>AWS</span>
+              <span>AI · LLM</span><span>REST · GraphQL</span><span>Git</span><span>React</span>
+              <!-- duplicate for seamless loop -->
+              <span>Angular</span><span>TypeScript</span><span>Node.js</span><span>MongoDB</span>
+              <span>PostgreSQL</span><span>Tailwind</span><span>Docker</span><span>AWS</span>
+              <span>AI · LLM</span><span>REST · GraphQL</span><span>Git</span><span>React</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 02 · ABOUT ============== -->
+    <section class="section" id="about" data-section="about">
+      <div class="container">
+        <div class="about-inner">
+          <div class="about-left">
+            <span class="section-id">02 — About</span>
+            <div class="about-num reveal">02</div>
+            <h2 class="about-headline reveal reveal-delay-1">
+              Turning complex problems into <em class="serif-italic">simple</em> digital experiences.
+            </h2>
+          </div>
+          <div class="about-right">
+            <p class="reveal">
+              I work across the full stack — from shaping product interfaces in Angular to wiring APIs in Node and persisting data in MongoDB or PostgreSQL. I care about how a product feels, not just how it ships.
+            </p>
+            <p class="reveal reveal-delay-1">
+              These days I'm especially interested in the seam between traditional web engineering and AI-powered products — building interfaces that feel calm, fast, and considered even when there's an LLM in the loop.
+            </p>
+            <svg class="about-fingerprint reveal reveal-delay-2" viewBox="0 0 140 140" aria-hidden="true">
+              <g fill="none" stroke="#7C5CFF" stroke-width="0.5" opacity="0.5">
+                <circle cx="70" cy="70" r="60"/>
+                <circle cx="70" cy="70" r="54"/>
+                <circle cx="70" cy="70" r="48"/>
+                <circle cx="70" cy="70" r="42"/>
+                <circle cx="70" cy="70" r="36"/>
+                <circle cx="70" cy="70" r="30"/>
+                <circle cx="70" cy="70" r="24"/>
+                <circle cx="70" cy="70" r="18"/>
+                <circle cx="70" cy="70" r="12"/>
+                <circle cx="70" cy="70" r="6"/>
+              </g>
+              <circle cx="70" cy="70" r="2" fill="#5CC8FF"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="about-stats reveal">
+          <div class="about-stat">
+            <div class="stat-num"><span class="counter" data-target="2">0</span><span>+</span></div>
+            <div class="stat-desc">Years building</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-num"><span class="counter" data-target="15">0</span><span>+</span></div>
+            <div class="stat-desc">Shipped projects</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-num"><span class="counter" data-target="10">0</span><span>+</span></div>
+            <div class="stat-desc">Technologies</div>
+          </div>
+          <div class="about-stat">
+            <div class="stat-num">∞</div>
+            <div class="stat-desc">Tabs open at all times</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 03 · SKILLS ============== -->
+    <section class="section" id="skills" data-section="skills">
+      <div class="container">
+        <div class="skills-header">
+          <div>
+            <span class="section-id">03 — Stack</span>
+            <h2 class="reveal">A small, considered <em class="serif-italic">ecosystem.</em></h2>
+          </div>
+          <p class="reveal reveal-delay-1">
+            Tools I reach for. Each one earns its place by doing something the others can't, or by doing it better.
+          </p>
+        </div>
+
+        <div class="skills-tech-grid reveal">
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7L2 14l10 5 10-5-10-5zm0 7L2 21l10 5 10-5-10-5z"/></svg>
+            </div>
+            <div class="tech-name">Angular</div>
+            <div class="tech-desc">Standalone components, signals, RxJS, zoneless apps</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h2v10H7V7zm4 0h2v10h-2V7zm4 0h2v10h-2V7z"/></svg>
+            </div>
+            <div class="tech-name">TypeScript</div>
+            <div class="tech-desc">Strict mode by default. Types as documentation</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8z"/><circle cx="12" cy="12" r="5"/></svg>
+            </div>
+            <div class="tech-name">Node.js</div>
+            <div class="tech-desc">Express, REST, GraphQL. Small services, clear boundaries</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M21 7l-9-5-9 5 9 5 9-5zm-9 7l-9-5v10l9 5 9-5V9l-9 5z"/></svg>
+            </div>
+            <div class="tech-name">MongoDB</div>
+            <div class="tech-desc">Document modeling, aggregation, indexes</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v6c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 11v6c0 1.7 4 3 9 3s9-1.3 9-3v-6"/></svg>
+            </div>
+            <div class="tech-name">PostgreSQL</div>
+            <div class="tech-desc">Schema design, joins, performance at scale</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 2L2 19h20L12 2zm0 4l7 11H5l7-11z"/></svg>
+            </div>
+            <div class="tech-name">Tailwind</div>
+            <div class="tech-desc">Design tokens, utilities, dark editorial layouts</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="7" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="17" cy="12" r="1.5"/></svg>
+            </div>
+            <div class="tech-name">Docker</div>
+            <div class="tech-desc">Reproducible builds, dev/prod parity, multi-stage images</div>
+          </div>
+          <div class="tech-card">
+            <div class="tech-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 4a6 6 0 110 12 6 6 0 010-12z"/><circle cx="12" cy="12" r="2"/></svg>
+            </div>
+            <div class="tech-name">AI · LLM</div>
+            <div class="tech-desc">Prompt systems, embeddings, RAG patterns</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 04 · PROJECTS ============== -->
+    <section class="section" id="projects" data-section="projects">
+      <div class="container">
+        <div class="projects-header">
+          <span class="section-id">04 — Selected work</span>
+          <h2 class="reveal">A few things I've <em class="serif-italic">built.</em></h2>
+        </div>
+
+        <div class="project-item reveal">
+          <div class="project-inner">
+            <div class="project-meta">
+              <span class="project-index">PRJ · 001</span>
+              <h3 class="project-name">RadarDraft</h3>
+              <p class="project-problem">
+                A drafting workspace for radar and tracking workflows — combining structured forms with a clean review surface so teams can move from raw signal to documented record without context-switching.
+              </p>
+              <div class="project-tags">
+                <span class="tag">Angular</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">MongoDB</span>
+              </div>
+              <div class="project-links">
+                <a class="btn-link" href="#" data-cursor="link">View project <span>↗</span></a>
+                <a class="btn-link" href="#" data-cursor="link">GitHub <span>↗</span></a>
+              </div>
+            </div>
+            <div class="project-visual">
+              <div class="mockup">
+                <div class="mockup-bar">
+                  <div class="mockup-dots"><span></span><span></span><span></span></div>
+                  <span>radardraft.app · dashboard</span>
+                </div>
+                <div class="mockup-body" style="padding:0">
+                  <svg viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+                    <rect width="600" height="380" fill="#0B0E16"/>
+                    <!-- sidebar -->
+                    <rect x="0" y="0" width="140" height="380" fill="#0F131C"/>
+                    <rect x="16" y="20" width="80" height="8" rx="2" fill="#1A1F2C"/>
+                    <rect x="16" y="42" width="100" height="6" rx="1" fill="#11151F"/>
+                    <rect x="16" y="58" width="80" height="6" rx="1" fill="#11151F"/>
+                    <rect x="16" y="74" width="90" height="6" rx="1" fill="#11151F"/>
+                    <rect x="16" y="120" width="60" height="6" rx="1" fill="#7C5CFF" opacity="0.4"/>
+                    <rect x="16" y="136" width="80" height="6" rx="1" fill="#11151F"/>
+                    <rect x="16" y="152" width="70" height="6" rx="1" fill="#11151F"/>
+                    <!-- top bar -->
+                    <rect x="156" y="20" width="180" height="10" rx="2" fill="#1A1F2C"/>
+                    <rect x="156" y="40" width="120" height="6" rx="1" fill="#11151F"/>
+                    <!-- list items -->
+                    <g transform="translate(156,80)">
+                      <rect width="424" height="56" rx="4" fill="#11151F"/>
+                      <circle cx="24" cy="28" r="8" fill="#7C5CFF" opacity="0.4"/>
+                      <rect x="44" y="14" width="160" height="8" rx="1" fill="#1A1F2C"/>
+                      <rect x="44" y="30" width="100" height="5" rx="1" fill="#161B27"/>
+                      <rect x="360" y="20" width="50" height="16" rx="8" fill="#7C5CFF" opacity="0.2"/>
+                      <text x="385" y="32" text-anchor="middle" fill="#7C5CFF" font-size="8" font-family="JetBrains Mono" letter-spacing="1">DRAFT</text>
+                    </g>
+                    <g transform="translate(156,148)">
+                      <rect width="424" height="56" rx="4" fill="#11151F"/>
+                      <circle cx="24" cy="28" r="8" fill="#5CC8FF" opacity="0.4"/>
+                      <rect x="44" y="14" width="200" height="8" rx="1" fill="#1A1F2C"/>
+                      <rect x="44" y="30" width="80" height="5" rx="1" fill="#161B27"/>
+                      <rect x="360" y="20" width="50" height="16" rx="8" fill="#5CC8FF" opacity="0.2"/>
+                      <text x="385" y="32" text-anchor="middle" fill="#5CC8FF" font-size="8" font-family="JetBrains Mono" letter-spacing="1">REVIEW</text>
+                    </g>
+                    <g transform="translate(156,216)">
+                      <rect width="424" height="56" rx="4" fill="#11151F"/>
+                      <circle cx="24" cy="28" r="8" fill="#FF5CC8" opacity="0.4"/>
+                      <rect x="44" y="14" width="140" height="8" rx="1" fill="#1A1F2C"/>
+                      <rect x="44" y="30" width="120" height="5" rx="1" fill="#161B27"/>
+                      <rect x="360" y="20" width="50" height="16" rx="8" fill="#28C840" opacity="0.2"/>
+                      <text x="385" y="32" text-anchor="middle" fill="#28C840" font-size="8" font-family="JetBrains Mono" letter-spacing="1">SHIPPED</text>
+                    </g>
+                    <!-- sparkline / data viz -->
+                    <g transform="translate(156,292)">
+                      <rect width="424" height="68" rx="4" fill="#0F131C" stroke="#1A1F2C" stroke-width="1"/>
+                      <polyline points="20,52 60,40 100,46 140,28 180,34 220,18 260,24 300,12 340,20 380,10 404,16"
+                                fill="none" stroke="#7C5CFF" stroke-width="1.5"/>
+                      <circle cx="404" cy="16" r="2" fill="#7C5CFF"/>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-item reveal">
+          <div class="project-inner">
+            <div class="project-meta">
+              <span class="project-index">PRJ · 002</span>
+              <h3 class="project-name">Storage Manager</h3>
+              <p class="project-problem">
+                A local-first inventory tool for tracking items, locations, and movements. Built to handle a few thousand records comfortably in the browser without a backend roundtrip for every interaction.
+              </p>
+              <div class="project-tags">
+                <span class="tag">React</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">IndexedDB</span>
+                <span class="tag">Tailwind</span>
+              </div>
+              <div class="project-links">
+                <a class="btn-link" href="#" data-cursor="link">View project <span>↗</span></a>
+                <a class="btn-link" href="#" data-cursor="link">GitHub <span>↗</span></a>
+              </div>
+            </div>
+            <div class="project-visual">
+              <div class="mockup project-scan-row">
+                <div class="mockup-bar">
+                  <div class="mockup-dots"><span></span><span></span><span></span></div>
+                  <span>storage · inventory</span>
+                </div>
+                <div class="mockup-body" style="padding:0">
+                  <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block">
+                    <rect width="600" height="320" fill="#0B0E16"/>
+                    <!-- header row -->
+                    <rect x="0" y="0" width="600" height="36" fill="#0F131C"/>
+                    <g font-family="JetBrains Mono" font-size="9" letter-spacing="1.2" fill="#5e6478">
+                      <text x="24" y="22">ID</text>
+                      <text x="100" y="22">ITEM</text>
+                      <text x="320" y="22">LOCATION</text>
+                      <text x="480" y="22">QTY</text>
+                    </g>
+                    <line x1="0" y1="36" x2="600" y2="36" stroke="#1A1F2C"/>
+
+                    <!-- data rows -->
+                    <g font-family="Inter Tight" font-size="11" fill="#a0a4b8">
+                      <g transform="translate(0,56)">
+                        <text x="24" y="0">#0014</text>
+                        <text x="100" y="0">Carbon filter</text>
+                        <text x="320" y="0">A-2-04</text>
+                        <text x="480" y="0" fill="#5CC8FF">42</text>
+                      </g>
+                      <g transform="translate(0,88)">
+                        <text x="24" y="0">#0015</text>
+                        <text x="100" y="0">Aluminum frame</text>
+                        <text x="320" y="0">B-1-12</text>
+                        <text x="480" y="0" fill="#5CC8FF">7</text>
+                      </g>
+                      <g transform="translate(0,120)">
+                        <text x="24" y="0">#0016</text>
+                        <text x="100" y="0">Driver board v2</text>
+                        <text x="320" y="0">C-3-01</text>
+                        <text x="480" y="0" fill="#FFC15C">2</text>
+                      </g>
+                      <g transform="translate(0,152)">
+                        <text x="24" y="0">#0017</text>
+                        <text x="100" y="0">Glass panel 12mm</text>
+                        <text x="320" y="0">A-1-08</text>
+                        <text x="480" y="0" fill="#5CC8FF">18</text>
+                      </g>
+                      <g transform="translate(0,184)">
+                        <text x="24" y="0">#0018</text>
+                        <text x="100" y="0">Thermal paste</text>
+                        <text x="320" y="0">D-2-15</text>
+                        <text x="480" y="0" fill="#FF5CC8">0</text>
+                      </g>
+                      <g transform="translate(0,216)">
+                        <text x="24" y="0">#0019</text>
+                        <text x="100" y="0">Silicone gasket</text>
+                        <text x="320" y="0">B-2-22</text>
+                        <text x="480" y="0" fill="#5CC8FF">63</text>
+                      </g>
+                      <g transform="translate(0,248)">
+                        <text x="24" y="0">#0020</text>
+                        <text x="100" y="0">Power supply 12V</text>
+                        <text x="320" y="0">C-1-03</text>
+                        <text x="480" y="0" fill="#5CC8FF">11</text>
+                      </g>
+                    </g>
+
+                    <!-- row dividers -->
+                    <g stroke="#11151F" stroke-width="1">
+                      <line x1="0" y1="68" x2="600" y2="68"/>
+                      <line x1="0" y1="100" x2="600" y2="100"/>
+                      <line x1="0" y1="132" x2="600" y2="132"/>
+                      <line x1="0" y1="164" x2="600" y2="164"/>
+                      <line x1="0" y1="196" x2="600" y2="196"/>
+                      <line x1="0" y1="228" x2="600" y2="228"/>
+                      <line x1="0" y1="260" x2="600" y2="260"/>
+                    </g>
+
+                    <!-- footer summary -->
+                    <rect x="0" y="280" width="600" height="40" fill="#0F131C"/>
+                    <g font-family="JetBrains Mono" font-size="9" letter-spacing="1.2" fill="#5e6478">
+                      <text x="24" y="304">7 OF 1,284 ITEMS · LOCAL MODE</text>
+                      <text x="490" y="304" fill="#7C5CFF">SYNCED</text>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 05 · CASE STUDY ============== -->
+    <section class="section" id="casestudy" data-section="casestudy">
+      <div class="container">
+        <div class="case-header">
+          <div>
+            <span class="case-label">Case study · 001</span>
+            <h2 class="case-name reveal">RadarDraft</h2>
+          </div>
+          <div class="case-meta-row reveal reveal-delay-1">
+            <div class="case-status"><span class="dot"></span> Shipped · In production</div>
+            <div class="caption" style="text-align:right">2025 · Solo build, ongoing</div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="case-block-label">Problem</div>
+          <div>
+            <h3>Drafting is fragmented.</h3>
+            <p>Tracking teams needed a single surface to capture raw observations, attach context, and route them for review. Existing tools either over-structured the workflow or hid the structure behind freeform notes.</p>
+            <p>The product had to feel like a focused document editor — but with the rails of a real workflow underneath.</p>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="case-block-label">Approach</div>
+          <div>
+            <h3>One canvas, two modes.</h3>
+            <p>Drafting happens in a calm editor. Review happens in a structured panel that surfaces metadata without breaking the reading flow. The two modes are never both open at once — that was an early lesson.</p>
+            <p>I built small, tested often, and kept the keyboard-first shortcuts the spine of the whole UX.</p>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="case-block-label">Architecture</div>
+          <div>
+            <h3>Angular front, Node API, Mongo store.</h3>
+            <p>A modular Angular app talks to a small Node/Express service. MongoDB keeps drafts, reviews, and a lightweight audit log. Nothing exotic — the discipline was in keeping boundaries clear.</p>
+            <div class="visual-placeholder">Architecture diagram · angular → node → mongo</div>
+            <div class="case-tech-tags">
+              <span class="tag">Angular (standalone components)</span>
+              <span class="tag">RxJS state</span>
+              <span class="tag">Node · Express</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">JWT auth</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="case-block-label">Interface</div>
+          <div>
+            <h3>Quiet by default.</h3>
+            <p>Three density levels, one persistent status footer, and a command bar for everything else. The brand of the product is restraint — typography, hairline borders, and a single accent color do the talking.</p>
+            <div class="visual-placeholder">Annotated screen · draft mode</div>
+          </div>
+        </div>
+
+        <div class="case-block reveal">
+          <div class="case-block-label">Key features</div>
+          <div>
+            <h3>What it ships with.</h3>
+            <p>Keyboard-first drafting, structured review panels, role-based access, an offline-tolerant editor, and a quiet notification system that doesn't shout.</p>
+            <div class="case-tech-tags">
+              <span class="tag">Drafts</span>
+              <span class="tag">Review queue</span>
+              <span class="tag">Roles</span>
+              <span class="tag">Offline cache</span>
+              <span class="tag">Search</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 06 · EXPERIENCE ============== -->
+    <section class="section" id="experience" data-section="experience">
+      <div class="container">
+        <div class="exp-header">
+          <span class="section-id">06 — Experience</span>
+          <h2 class="reveal">A <em class="serif-italic">path,</em> not a ladder.</h2>
+        </div>
+        <div class="exp-table reveal" role="table" aria-label="Experience timeline">
+          <div class="exp-row exp-row-head" role="row">
+            <div class="exp-cell exp-cell-when" role="columnheader">When</div>
+            <div class="exp-cell exp-cell-role" role="columnheader">Role</div>
+            <div class="exp-cell exp-cell-company" role="columnheader">Company</div>
+            <div class="exp-cell exp-cell-impact" role="columnheader">Impact</div>
+            <div class="exp-cell exp-cell-tech" role="columnheader">Stack</div>
+          </div>
+          <div class="exp-row" role="row">
+            <div class="exp-cell exp-cell-when" role="cell"><span class="exp-when-text">2024 — Now</span></div>
+            <div class="exp-cell exp-cell-role" role="cell">Senior Frontend Engineer</div>
+            <div class="exp-cell exp-cell-company" role="cell">Radardraft</div>
+            <div class="exp-cell exp-cell-impact" role="cell">Led the Angular rewrite, built a shared design system, and mentored 2 junior engineers. Shipped the platform that powers live audits for 1k+ items per session.</div>
+            <div class="exp-cell exp-cell-tech" role="cell"><span class="exp-tech">Angular</span><span class="exp-tech">TypeScript</span><span class="exp-tech">Node</span><span class="exp-tech">MongoDB</span></div>
+          </div>
+          <div class="exp-row" role="row">
+            <div class="exp-cell exp-cell-when" role="cell"><span class="exp-when-text">2023 — 2024</span></div>
+            <div class="exp-cell exp-cell-role" role="cell">Frontend Engineer</div>
+            <div class="exp-cell exp-cell-company" role="cell">Storage Manager</div>
+            <div class="exp-cell exp-cell-impact" role="cell">Built a local-first inventory tool that handles 1,000+ records offline-first with IndexedDB sync. Owned the full frontend from UX to release.</div>
+            <div class="exp-cell exp-cell-tech" role="cell"><span class="exp-tech">React</span><span class="exp-tech">TypeScript</span><span class="exp-tech">IndexedDB</span></div>
+          </div>
+          <div class="exp-row" role="row">
+            <div class="exp-cell exp-cell-when" role="cell"><span class="exp-when-text">2022 — 2023</span></div>
+            <div class="exp-cell exp-cell-role" role="cell">Software Engineer</div>
+            <div class="exp-cell exp-cell-company" role="cell">Xorbis Tech</div>
+            <div class="exp-cell exp-cell-impact" role="cell">Shipped internal tooling and a payment-dashboard rewrite. Cut report generation from minutes to seconds.</div>
+            <div class="exp-cell exp-cell-tech" role="cell"><span class="exp-tech">Angular</span><span class="exp-tech">Node</span><span class="exp-tech">PostgreSQL</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 07 · LAB ============== -->
+    <section class="section" id="lab" data-section="lab">
+      <div class="container">
+        <div class="lab-header">
+          <span class="section-id">07 — Lab</span>
+          <h2 class="reveal">Small experiments, <em class="serif-italic">loose threads.</em></h2>
+          <p class="lab-note">Hover a tile to dim the others. Click in a future version.</p>
+        </div>
+        <div class="lab-grid" id="lab-grid">
+
+          <div class="lab-tile">
+            <div class="lab-canvas">
+              <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
+                <defs>
+                  <filter id="turb"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2"><animate attributeName="baseFrequency" values="0.04;0.08;0.04" dur="8s" repeatCount="indefinite"/></feTurbulence></filter>
+                </defs>
+                <rect width="200" height="150" fill="#0B0E16"/>
+                <rect width="200" height="150" filter="url(#turb)" opacity="0.7"/>
+                <rect width="200" height="150" fill="url(#coreFaceG)"/>
+                <defs>
+                  <linearGradient id="coreFaceG" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#7C5CFF" stop-opacity="0.2"/>
+                    <stop offset="100%" stop-color="#5CC8FF" stop-opacity="0.05"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="lab-label">
+              <span class="lab-title">Shader study</span>
+              <span>EX · 01</span>
+            </div>
+          </div>
+
+          <div class="lab-tile">
+            <div class="lab-canvas" style="display:grid;place-items:center">
+              <div style="position:relative;width:60px;height:60px">
+                <div style="position:absolute;inset:0;border:1px solid var(--accent-violet);border-radius:50%;animation:lab-cursor 2.4s ease-in-out infinite"></div>
+                <div style="position:absolute;inset:14px;background:var(--accent-violet);border-radius:50%;box-shadow:0 0 18px var(--glow-violet)"></div>
+                <svg viewBox="0 0 60 60" style="position:absolute;inset:0;width:100%;height:100%">
+                  <line x1="30" y1="0" x2="30" y2="60" stroke="#7C5CFF" stroke-width="0.5" opacity="0.5"/>
+                  <line x1="0" y1="30" x2="60" y2="30" stroke="#7C5CFF" stroke-width="0.5" opacity="0.5"/>
+                </svg>
+              </div>
+            </div>
+            <style>
+              @keyframes lab-cursor { 0%,100% { transform: translate(0,0); } 50% { transform: translate(20px, -10px); } }
+            </style>
+            <div class="lab-label">
+              <span class="lab-title">Cursor state</span>
+              <span>EX · 02</span>
+            </div>
+          </div>
+
+          <div class="lab-tile">
+            <div class="lab-canvas" style="display:grid;place-items:center">
+              <div style="text-align:center">
+                <input type="range" min="0" max="100" value="40" style="width:140px;accent-color:var(--accent-violet);background:transparent"/>
+                <div id="lab-typo" style="font-family:var(--font-display);font-size:2rem;letter-spacing:-0.02em;color:var(--ink-100);margin-top:8px;font-style:italic">drift</div>
+              </div>
+            </div>
+            <div class="lab-label">
+              <span class="lab-title">Typography scrub</span>
+              <span>EX · 03</span>
+            </div>
+          </div>
+
+          <div class="lab-tile">
+            <div class="lab-canvas" id="lab-particles" style="overflow:hidden"></div>
+            <div class="lab-label">
+              <span class="lab-title">Particle system</span>
+              <span>EX · 04</span>
+            </div>
+          </div>
+
+          <div class="lab-tile">
+            <div class="lab-canvas" style="display:grid;place-items:center">
+              <button class="btn btn-primary" style="cursor:none">Send it →</button>
+            </div>
+            <div class="lab-label">
+              <span class="lab-title">Magnetic button</span>
+              <span>EX · 05</span>
+            </div>
+          </div>
+
+          <div class="lab-tile" style="display:grid;place-items:center">
+            <div style="text-align:center">
+              <div style="font-family:var(--font-mono);font-size:0.6875rem;letter-spacing:0.2em;color:var(--accent-violet)">THREE.JS</div>
+              <div style="font-family:var(--font-mono);font-size:0.625rem;letter-spacing:0.18em;color:var(--ink-30);margin-top:6px">PLANNED · Q4</div>
+            </div>
+            <div class="lab-label">
+              <span class="lab-title">WebGL placeholder</span>
+              <span>EX · 06</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 08 · BLOG ============== -->
+    <section class="section" id="blog" data-section="blog">
+      <div class="container">
+        <div class="blog-header">
+          <span class="section-id">08 — Insights</span>
+          <h2 class="reveal">Writing, when I have <em class="serif-italic">something to say.</em></h2>
+        </div>
+
+        <article class="blog-featured reveal" data-cursor="link">
+          <div>
+            <span class="blog-cat">Engineering · Notes</span>
+            <h3 class="blog-title-featured">Designing a quieter web app: small things that change how a product feels.</h3>
+            <p class="blog-dek">A short walkthrough of the layout, motion, and typography decisions behind this very site — and the case for restraint in modern product UI.</p>
+            <div class="blog-byline">
+              <span>Dharmender</span>
+              <span>· 6 min read</span>
+              <span>· Coming soon</span>
+            </div>
+          </div>
+          <div class="blog-image-placeholder">Cover · 04 / 03</div>
+        </article>
+
+        <div class="blog-list">
+          <article class="blog-card reveal" data-cursor="link">
+            <span class="blog-cat">Angular</span>
+            <h4 class="blog-title-small">Standalone components, signals, and the long goodbye to NgModules.</h4>
+            <div class="blog-meta-small">5 min · In progress</div>
+          </article>
+          <article class="blog-card reveal reveal-delay-1" data-cursor="link">
+            <span class="blog-cat">AI</span>
+            <h4 class="blog-title-small">Putting an LLM in the loop without losing the interface.</h4>
+            <div class="blog-meta-small">7 min · Draft</div>
+          </article>
+          <article class="blog-card reveal reveal-delay-2" data-cursor="link">
+            <span class="blog-cat">Performance</span>
+            <h4 class="blog-title-small">A short list of frontend performance habits that actually move numbers.</h4>
+            <div class="blog-meta-small">4 min · Draft</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== 09 · CONTACT ============== -->
+    <section class="section" id="contact" data-section="contact">
+      <div class="container">
+        <div class="contact-inner">
+          <div class="contact-left">
+            <span class="section-id">09 — Contact</span>
+            <h2 class="contact-headline reveal">
+              Let's build <em>something</em><br/>
+              worth remembering.
+            </h2>
+            <p class="contact-sub reveal reveal-delay-1">
+              Open to product work, AI integrations, and ambitious frontend builds. Drop a line — I read every message.
+            </p>
+            <div class="contact-links reveal reveal-delay-2">
+              <a class="contact-link-row" href="mailto:hello@dharmender.dev" data-cursor="link">
+                <span>EMAIL</span>
+                <span class="link-val">hello@dharmender.dev <span class="arrow">↗</span></span>
+              </a>
+              <a class="contact-link-row" href="#" data-cursor="link">
+                <span>GITHUB</span>
+                <span class="link-val">github.com/dharmender <span class="arrow">↗</span></span>
+              </a>
+              <a class="contact-link-row" href="#" data-cursor="link">
+                <span>LINKEDIN</span>
+                <span class="link-val">linkedin.com/in/dharmender <span class="arrow">↗</span></span>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-form-wrap reveal reveal-delay-2">
+            <h3>Or write a note.</h3>
+            <form class="form" onsubmit="event.preventDefault(); alert('Form is a visual placeholder in this prototype.');">
+              <div class="form-field">
+                <label for="name">Name</label>
+                <input id="name" type="text" placeholder="Your name" autocomplete="off" />
+              </div>
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="you@somewhere.com" autocomplete="off" />
+              </div>
+              <div class="form-field">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="A few lines about what you're working on."></textarea>
+              </div>
+              <button class="btn btn-primary btn-send" type="submit" data-cursor="link">Send message →</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============== 10 · FOOTER ============== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div style="color:var(--ink-100)">© 2026 Dharmender</div>
+          <div style="margin-top:4px">Hand-coded in a quiet room.</div>
+        </div>
+        <div class="footer-clock" id="footer-clock">UTC — : — : —</div>
+        <div class="footer-right">
+          <div class="footer-social">
+            <a href="#" data-cursor="link">GitHub</a>
+            <a href="#" data-cursor="link">LinkedIn</a>
+            <a href="#" data-cursor="link">Twitter</a>
+          </div>
+          <a class="footer-top-btn" href="#hero" data-cursor="link">Back to top ↑</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        Designed and built by Dharmender · No frameworks harmed in the making of this prototype.
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme switcher mount -->
+  <div id="theme-switcher" aria-label="Portfolio theme"></div>
+
+  <link rel="stylesheet" href="shared/theme-switcher.css" />
+  <script src="shared/registry.js" defer></script>
+  <script src="shared/theme-switcher.js" defer></script>
+
+  <!-- scripts (deferred) -->
+  <script src="scripts/mouse.js" defer></script>
+  <script src="scripts/three-scene.js" defer></script>
+  <script src="scripts/core.js" defer></script>
+  <script src="scripts/scroll.js" defer></script>
+  <script src="scripts/nav.js" defer></script>
+  <script src="scripts/skills.js" defer></script>
+  <script src="scripts/projects.js" defer></script>
+  <script src="scripts/lab.js" defer></script>
+  <script src="scripts/counter.js" defer></script>
+  <script src="scripts/clock.js" defer></script>
+  <script src="scripts/particles.js" defer></script>
+</body>
+</html>

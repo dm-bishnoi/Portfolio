@@ -1,0 +1,102 @@
+{
+  "profile": {
+    "name": "Dharmender",
+    "title": "Full Stack Developer",
+    "headline": "I build digital experiences that feel alive.",
+    "intro": "I'm Dharmender — a full stack developer crafting calm, considered products with Angular, TypeScript, and a long-running curiosity for how the web can feel.",
+    "location": "India",
+    "availability": "Open to interesting work"
+  },
+  "contact": {
+    "email": "hello@dharmender.dev",
+    "github": "https://github.com/",
+    "linkedin": "https://linkedin.com/",
+    "twitter": "https://twitter.com/"
+  },
+  "nav": [
+    { "id": "home",      "label": "Home",      "num": "01" },
+    { "id": "about",     "label": "About",     "num": "02" },
+    { "id": "skills",    "label": "Skills",    "num": "03" },
+    { "id": "experience","label": "Experience","num": "04" },
+    { "id": "projects",  "label": "Projects",  "num": "05" },
+    { "id": "contact",   "label": "Contact",   "num": "06" }
+  ],
+  "skills": [
+    { "name": "Angular",    "desc": "Standalone components, signals, RxJS, zoneless apps." },
+    { "name": "TypeScript", "desc": "Strict mode by default. Types as documentation." },
+    { "name": "Node.js",    "desc": "Express, REST, GraphQL. Small services, clear boundaries." },
+    { "name": "MongoDB",    "desc": "Document modeling, aggregation, indexes." },
+    { "name": "PostgreSQL", "desc": "Schema design, joins, performance at scale." },
+    { "name": "Tailwind",   "desc": "Design tokens, utilities, dark editorial layouts." },
+    { "name": "Docker",     "desc": "Reproducible builds, dev/prod parity, multi-stage images." },
+    { "name": "AI · LLM",   "desc": "Prompt systems, embeddings, RAG patterns." }
+  ],
+  "experience": [
+    {
+      "role": "Senior Frontend Engineer",
+      "company": "Radardraft",
+      "period": "2024 → Now",
+      "duration": "2+ yrs",
+      "impact": "Led the Angular rewrite of the core product surface, set up the design-system story, and mentored a small team of two junior engineers through their first production ship.",
+      "tech": ["Angular", "TypeScript", "Node.js", "MongoDB"]
+    },
+    {
+      "role": "Frontend Engineer",
+      "company": "Storage Manager",
+      "period": "2023 → 2024",
+      "duration": "1 yr",
+      "impact": "Built a local-first inventory tool in React + IndexedDB that handled 1k+ records without a backend roundtrip. Owned the whole surface from types to UX copy.",
+      "tech": ["React", "TypeScript", "IndexedDB"]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Xorbis Technologies",
+      "period": "2022 → 2023",
+      "duration": "1 yr",
+      "impact": "Built internal tooling, payment dashboards, and several production bug fixes that quietly prevented a few not-so-quiet customer escalations.",
+      "tech": ["Angular", "Node.js", "PostgreSQL"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "RadarDraft",
+      "featured": true,
+      "year": "2024",
+      "tag": "Featured",
+      "desc": "A drafting workspace for radar and tracking workflows — combining structured forms with a clean review surface so teams can move from raw signal to documented record without context-switching.",
+      "tech": ["Angular", "Node.js", "MongoDB", "WebSockets"],
+      "url": "#",
+      "github": "#"
+    },
+    {
+      "name": "Storage Manager",
+      "featured": true,
+      "year": "2023",
+      "tag": "Featured",
+      "desc": "A local-first inventory tool that handles 1k+ records in the browser without a backend roundtrip. Built around IndexedDB, designed to feel instant.",
+      "tech": ["React", "TypeScript", "IndexedDB"],
+      "url": "#",
+      "github": "#"
+    },
+    {
+      "name": "Angular Design System",
+      "featured": false,
+      "year": "2024",
+      "tag": "Library",
+      "desc": "A small, considered component library used across Radardraft — tokens, primitives, layout helpers, Storybook-driven.",
+      "tech": ["Angular", "TypeScript", "Storybook"],
+      "url": "#",
+      "github": null
+    },
+    {
+      "name": "Insights Dashboard",
+      "featured": false,
+      "year": "2023",
+      "tag": "Side project",
+      "desc": "A small analytics surface for product teams. Quiet, fast, and built to be read at a glance.",
+      "tech": ["Angular", "D3", "Node.js"],
+      "url": "#",
+      "github": null
+    }
+  ]
+}

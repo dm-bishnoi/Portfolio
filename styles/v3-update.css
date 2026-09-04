@@ -1,0 +1,459 @@
+/* v3-update.css — Dark V3 visual refresh
+   Enhanced dark palette, tech grid, version switcher, premium polish */
+
+/* ============== DARK V3 PALETTE OVERRIDES ============== */
+:root {
+  /* Deeper, richer dark background */
+  --bg-0: #090D16;
+  --bg-1: #0B0E16;
+  --bg-2: #11151F;
+  --bg-3: #161B27;
+
+  /* Enhanced accent system */
+  --accent-violet: #A855F7;
+  --accent-violet-soft: #C084FC;
+  --accent-blue: #5CC8FF;
+  --accent-magenta: #FF5CC8;
+  --accent-amber: #FFC15C;
+
+  /* Improved glows */
+  --glow-violet: rgba(168, 85, 247, 0.5);
+  --glow-blue: rgba(92, 200, 255, 0.4);
+  --glow-magenta: rgba(255, 92, 200, 0.3);
+
+  /* Enhanced text contrast */
+  --ink-100: #F4F5FA;
+  --ink-80: rgba(244, 245, 250, 0.88);
+  --ink-70: rgba(244, 245, 250, 0.75);
+  --ink-50: rgba(244, 245, 250, 0.55);
+  --ink-30: rgba(244, 245, 250, 0.32);
+
+  /* Lines */
+  --line-08: rgba(255, 255, 255, 0.05);
+  --line-15: rgba(255, 255, 255, 0.10);
+  --line-25: rgba(255, 255, 255, 0.15);
+  --line-40: rgba(255, 255, 255, 0.22);
+}
+
+/* ============== ENHANCED BACKGROUND ============== */
+.bg-glow-a {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, transparent 60%);
+  opacity: 0.65;
+}
+
+.bg-glow-b {
+  background: radial-gradient(circle, rgba(92, 200, 255, 0.20) 0%, transparent 60%);
+  opacity: 0.55;
+}
+
+.bg-grid {
+  opacity: 0.5;
+}
+
+/* ============== ENHANCED HERO ============== */
+.hero-headline {
+  font-size: clamp(3.25rem, 7vw, 8rem);
+  background: linear-gradient(
+    135deg,
+    var(--ink-100) 0%,
+    var(--ink-100) 50%,
+    var(--accent-violet-soft) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-headline em {
+  background: linear-gradient(135deg, var(--accent-violet), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: italic;
+}
+
+.hero-eyebrow .tag {
+  background: rgba(168, 85, 247, 0.12);
+  border-color: rgba(168, 85, 247, 0.4);
+  color: var(--accent-violet-soft);
+}
+
+.hero-status .dot {
+  background: #22C55E;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+}
+
+/* ============== ENHANCED CORE/3D STAGE ============== */
+.core {
+  background:
+    radial-gradient(circle at 50% 50%,
+      rgba(168, 85, 247, 0.12) 0%,
+      rgba(92, 200, 255, 0.06) 30%,
+      rgba(11, 14, 22, 0.0) 55%,
+      transparent 80%);
+}
+
+.core-readout .dot {
+  background: #22C55E;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
+}
+
+.core-corner {
+  border-color: var(--accent-violet);
+  opacity: 0.7;
+}
+
+.core-corner:hover {
+  border-color: var(--accent-blue);
+}
+
+/* ============== TECH CARD GRID ============== */
+.skills-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+
+.tech-card {
+  position: relative;
+  padding: 24px 20px;
+  background: rgba(17, 21, 31, 0.6);
+  border: 1px solid var(--line-15);
+  border-radius: 12px;
+  transition: all 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  overflow: hidden;
+}
+
+.tech-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-violet), transparent);
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.tech-card:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  transform: translateY(-2px);
+  background: rgba(17, 21, 31, 0.8);
+}
+
+.tech-card:hover::before {
+  opacity: 1;
+}
+
+.tech-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(168, 85, 247, 0.1);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--accent-violet-soft);
+  transition: all 220ms ease;
+}
+
+.tech-card:hover .tech-icon {
+  background: rgba(168, 85, 247, 0.18);
+  border-color: rgba(168, 85, 247, 0.4);
+  color: var(--accent-violet);
+}
+
+.tech-name {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-100);
+  margin-bottom: 8px;
+}
+
+.tech-desc {
+  font-size: 0.8125rem;
+  color: var(--ink-50);
+  line-height: 1.5;
+}
+
+@media (max-width: 1100px) {
+  .skills-tech-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-tech-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-tech-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============== ENHANCED PROJECTS ============== */
+.project-item {
+  background: rgba(11, 14, 22, 0.3);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 32px;
+}
+
+.project-item:nth-child(1) .project-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.project-item:nth-child(2) .project-inner {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.project-item:nth-child(2) .project-meta {
+  order: 1;
+}
+
+.project-item:nth-child(2) .project-visual {
+  order: 0;
+}
+
+.project-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-index {
+  font-size: 0.6875rem;
+}
+
+.project-name {
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+}
+
+.project-problem {
+  max-width: 50ch;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.project-links {
+  margin-top: 8px;
+}
+
+.btn-link {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-violet-soft);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 220ms ease;
+  cursor: none;
+}
+
+.btn-link:hover {
+  color: var(--accent-violet);
+  gap: 12px;
+}
+
+.mockup {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .project-item {
+    padding: 24px;
+  }
+
+  .project-item:nth-child(n) .project-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .project-item:nth-child(n) .project-meta {
+    order: 0;
+  }
+
+  .project-item:nth-child(n) .project-visual {
+    order: 1;
+  }
+}
+
+/* ============== ENHANCED EXPERIENCE ============== */
+.exp-header h2 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.exp-node {
+  background: rgba(17, 21, 31, 0.6);
+  border: 1px solid var(--line-15);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 220ms ease;
+}
+
+.exp-node:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  background: rgba(17, 21, 31, 0.8);
+}
+
+.exp-node-year {
+  font-size: 0.625rem;
+}
+
+.exp-node-role {
+  font-size: 1.0625rem;
+  font-weight: 500;
+}
+
+.exp-node-desc {
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+
+.exp-node-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-violet);
+  box-shadow: 0 0 12px var(--glow-violet);
+}
+
+/* ============== ENHANCED ABOUT ============== */
+.about-headline {
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  line-height: 1.15;
+}
+
+.about-right p {
+  font-size: 0.9375rem;
+  line-height: 1.75;
+}
+
+/* ============== ENHANCED CONTACT ============== */
+.contact-headline {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.contact-link-row {
+  padding: 16px 0;
+}
+
+.contact-link-row .link-val {
+  color: var(--ink-30);
+  font-size: 0.875rem;
+}
+
+.contact-link-row:hover .link-val {
+  color: var(--accent-violet-soft);
+}
+
+/* ============== ENHANCED BLOG ============== */
+.blog-featured {
+  background: rgba(17, 21, 31, 0.5);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.blog-featured::before {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.08), transparent 60%);
+}
+
+.blog-card {
+  background: rgba(17, 21, 31, 0.4);
+  border-radius: 12px;
+  transition: all 220ms ease;
+}
+
+.blog-card:hover {
+  background: rgba(17, 21, 31, 0.6);
+  transform: translateY(-2px);
+}
+
+/* ============== ENHANCED LAB ============== */
+.lab-tile {
+  background: rgba(17, 21, 31, 0.5);
+  border-radius: 12px;
+}
+
+/* ============== ENHANCED BUTTONS ============== */
+.btn-primary {
+  background: var(--accent-violet);
+  border-color: var(--accent-violet);
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #9333EA;
+  border-color: #9333EA;
+  box-shadow: 0 8px 30px rgba(168, 85, 247, 0.4);
+  transform: translateY(-2px);
+}
+
+/* ============== SCROLLBAR ============== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.6);
+}
+
+/* ============== REDUCED MOTION ============== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .bg-glow-a,
+  .bg-glow-b {
+    transition: none;
+  }
+
+  .tech-card:hover,
+  .project-item:hover,
+  .exp-node:hover,
+  .blog-card:hover {
+    transform: none;
+  }
+}
